@@ -58,7 +58,7 @@
 
 
 
-    <router-link :to="{name: 'usuarios'}" class="nav-link" >
+    <router-link :to="{name: 'usuarios'}" class="nav-link"  v-if="this.$auth.user().id_role == 1" >
       <vs-sidebar-item index="2" icon="account_circle" >
         Usuarios
       </vs-sidebar-item>
@@ -72,11 +72,6 @@
       </vs-sidebar-item>
     </router-link>
 
-    <router-link :to="{name: 'reportes'}" class="nav-link" v-if="this.$auth.user().id_role == 1 || this.$auth.user().id_role == 3">
-      <vs-sidebar-item index="4" icon="web" >
-        Reportes
-      </vs-sidebar-item>
-    </router-link>
 
 
 
