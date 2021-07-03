@@ -30,7 +30,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text bg-info border-info"><i class="fa fa-id-card"></i></span>
 								</div>
-								<input type="text" class="form-control" placeholder="Número Documento" v-model="numero_documento">
+								<input type="number" class="form-control" placeholder="Número Documento" v-model="numero_documento" required>
 							</div>
 						</div>
 
@@ -39,7 +39,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text bg-info border-info"><i class="ti-user"></i></span>
 								</div>
-								<input type="text" class="form-control" placeholder="Nombre Completo" v-model="nombre_completo">
+								<input type="text" class="form-control" placeholder="Nombre Completo" v-model="nombre_completo" required>
 							</div>
 						</div>
 
@@ -48,7 +48,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text bg-info border-info"><i class="fa fa-phone"></i></span>
 								</div>
-								<input type="text" class="form-control" placeholder="Telefono" v-model="telefono">
+								<input type="number" class="form-control" placeholder="Telefono" v-model="telefono" required>
 							</div>
 						</div>
 
@@ -57,7 +57,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text bg-info border-info"><i class="fa fa-map-marker"></i></span>
 								</div>
-								<input type="text" class="form-control" placeholder="Dirección" v-model="direccion">
+								<input type="text" class="form-control" placeholder="Dirección" v-model="direccion" required>
 							</div>
 						</div>
 
@@ -66,7 +66,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text bg-info border-info"><i class="ti-email"></i></span>
 								</div>
-								<input type="email" class="form-control" placeholder="Email" v-model="email">
+								<input type="email" class="form-control" placeholder="Email" v-model="email" required>
 							</div>
 						</div>
 						<div class="form-group">
@@ -74,7 +74,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text bg-info border-info"><i class="ti-lock"></i></span>
 								</div>
-								<input type="password" class="form-control" placeholder="Contraseña" v-model="password">
+								<input type="password" class="form-control" placeholder="Contraseña" v-model="password" required>
 							</div>
 						</div>
 						<div class="form-group">
@@ -82,7 +82,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text bg-info border-info"><i class="ti-lock"></i></span>
 								</div>
-								<input type="password" class="form-control" placeholder="Confirmar Contraseña" v-model="password_confirmation">
+								<input type="password" class="form-control" placeholder="Confirmar Contraseña" v-model="password_confirmation" required>
 							</div>
 						</div>
 						  <div class="row">
@@ -179,6 +179,7 @@
           success: function () {
 
             this.$swal(
+                    'Creado',
                     'Registro con éxito',
                     'success'
                 )

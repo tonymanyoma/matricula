@@ -17,7 +17,7 @@ import axios from 'axios'
 import VueAuth from '@websanova/vue-auth'
 import VueAxios from 'vue-axios'
 import auth from './auth'
-import VuePaginate from 'vue-paginate'
+
 
 import { ServerTable } from 'vue-tables-2';
 
@@ -46,7 +46,7 @@ Vue.use(VueSignaturePad);
 
 Vue.use(Vuesax)
 Vue.use(ServerTable);
-Vue.use(VuePaginate)
+
 // Set Vue router
 Vue.router = router
 Vue.use(VueRouter)
@@ -75,17 +75,13 @@ Vue.filter('format-thousands', function (value) {
 Vue.component('app', require('./components/AppComponent.vue').default);
 
 Vue.component('principal', require('./components/layouts/Principal.vue').default);
-Vue.component('spinner', require('./components/Spinner.vue').default);
-
 Vue.component('e404', require('./components/E404.vue').default);
-
-Vue.component('pagination', require('laravel-vue-pagination'));
 
 
 Vue.component('dashboard', require('./views/Dashboard.vue').default);
-
 Vue.component('usuarios', require('./views/Usuarios.vue').default);
-Vue.component('reportes', require('./views/Reportes.vue').default);
+
+
 Vue.component('configuracion', require('./views/Configuracion.vue').default);
 Vue.component('login', require('./views/Login.vue').default);
 Vue.component('register', require('./views/Register.vue').default);
