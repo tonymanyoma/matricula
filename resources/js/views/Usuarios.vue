@@ -473,7 +473,6 @@
             arraydocumentos: [],
             arrayroles: [],
             selected:[],
-            loading: true,
             newid_tipo:'',
             newrole:'',
             newnumero_documento:'',
@@ -484,8 +483,6 @@
             newusername:'',
             newpassword:'',
             errors: [],
-            btnGuardar:"GUARDAR",
-            istercero:false,
             fillusuarios:{'id': '', 'numero_documento': '', 'nombres_completo': '', 'telefono': '', 'direccion': '','email': '','id_tipo_documento':'','id_role':'','password':''},
            
             
@@ -547,31 +544,6 @@
                 });
             },
 
-            handleFilePondInit: function() {
-                console.log('FilePond has initialized');
-
-                // FilePond instance methods are available on `this.$refs.pond`
-            },
-            getIt: function () {
-
-                let file = this.$refs.pond.getFile().file;
-
-                this.cargarImagen(file);
-
-
-            },
-
-            cargarImagen(file) {
-                let reader = new FileReader();
-
-                reader.onload = e => {
-                    this.fotoMiniatura = e.target.result;
-
-
-                };
-                    reader.readAsDataURL(file);
-                },
-
           
 
             getUsuarios(){
@@ -585,7 +557,7 @@
                 }).then(function (response) {
                     me.Usuarios = response.data,
                     me.spinnerClose();
-                    me.loading = false
+
                 })
                 .catch(function (error) {
                     // handle error
@@ -784,7 +756,7 @@
 </script>
 
 
-<style>
+<style scoped>
 
 th,td{
 

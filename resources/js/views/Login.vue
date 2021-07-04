@@ -40,6 +40,13 @@
 							<div class="col-12 text-center">
 							  <button type="submit" class="btn btn-info btn-block margin-top-10 btn-rounded">INICIAR SESIÓN</button>
 							</div >
+
+              
+              <div class="col-12 text-center">
+                <br>
+            	  <router-link :to="{name: 'register'}"><a class="cambio-color" href="#">¿No tienes una cuenta? Regístrate</a></router-link>
+              </div>
+
 						  </div>
 
               <br><br>
