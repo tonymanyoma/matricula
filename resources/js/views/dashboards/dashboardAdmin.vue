@@ -15,12 +15,12 @@
 			  <!-- small box -->
 			  <div class="small-box box-inverse bg-success-gradient">
 				<div class="inner">
-				  <h3></h3>
+				  <h3>{{ this.TotalCursos }}</h3>
 
 				  <p>TOTAL CURSOS</p>
 				</div>
 				<div class="icon text-white">
-				  <i class="fa fa-check"></i>
+				  <i class="fa fa-book"></i>
 				</div>
 				
 			  </div>
@@ -28,14 +28,14 @@
 
             <div class="col-xl-4 col-md-4 col-4" >
 			  <!-- small box -->
-			  <div class="small-box box-inverse bg-warning-gradient">
+			  <div class="small-box box-inverse bg-primary-gradient-animet">
 				<div class="inner">
-				  <h3></h3>
+				  <h3>{{ this.TotalUsuarios }}</h3>
 
 				  <p>TOTAL USUARIOS</p>
 				</div>
 				<div class="icon text-white">
-				  <i class="fa fa-exclamation-triangle"></i>
+				  <i class="fa fa-user"></i>
 				</div>
 				
 			  </div>
@@ -43,14 +43,14 @@
 
             <div class="col-xl-4 col-md-4 col-4" >
 			  <!-- small box -->
-			  <div class="small-box box-inverse bg-warning-gradient">
+			  <div class="small-box box-inverse bg-info-gradient-animet">
 				<div class="inner">
-				  <h3></h3>
+				  <h3>{{ this.TotalMatriculas }}</h3>
 
 				  <p>TOTAL MATRICULAS</p>
 				</div>
 				<div class="icon text-white">
-				  <i class="fa fa-exclamation-triangle"></i>
+				  <i class="fa fa-address-book"></i>
 				</div>
 				
 			  </div>
@@ -75,7 +75,7 @@
 
         created: function(){
 
-
+            this.InfoDashboard();
 
         },
 
@@ -94,6 +94,29 @@
       
 
         methods:{
+
+            InfoDashboard(){
+                
+                //consultar consumibles del tecnico
+
+                    let me = this;
+                    this.$http({
+                    url: 'auth/infoDashboardAdmin',
+                    method: 'get',
+   
+                    }).then(function (response) {
+                        me.TotalCursos = response.data.TotalCursos;
+                        me.TotalUsuarios = response.data.TotalUsuarios;
+                        me.TotalMatriculas = response.data.TotalMatriculas;
+ 
+                    })
+                    .catch(function (error) {
+                        // handle error
+                        console.log(error);
+                    });
+
+
+            }, 
 
         }
 

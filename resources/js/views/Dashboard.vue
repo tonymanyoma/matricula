@@ -3,7 +3,7 @@
     <div>
 
         <dashboardAdmin v-if="this.rol_user == 1"></dashboardAdmin>
-        <dashboardContabilidad v-if="this.rol_user == 2"></dashboardContabilidad>
+        <dashboardAlumno v-if="this.rol_user == 2"></dashboardAlumno>
    
     </div>
 
@@ -27,7 +27,7 @@
             this.$emit('update:layout', LayoutDefault);
         },
         components: {
-            
+
             dashboardAdmin,
             dashboardAlumno
         },

@@ -29,7 +29,10 @@ Route::prefix('auth')->group(function () {
         Route::post('logout', 'AuthController@logout');
 
        
-
+        //Dashboard
+        Route::get('infoDashboardAdmin', 'DashboardController@infoDashboardAdmin');
+        Route::get('infoDashboardAlumno', 'DashboardController@infoDashboardAlumno');
+        
 
         //Usuarios
         Route::resource('usuarios', 'UsuarioController');
