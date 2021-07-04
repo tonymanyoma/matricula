@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Usuario;
 use Illuminate\Http\Request;
 use DB;
-
+use Auth;
 
 class UsuarioController extends Controller
 {
@@ -23,14 +23,17 @@ class UsuarioController extends Controller
 
             try{
 
+                    $id_user = Auth::user()->id;
+
                     $usuarios = DB::table('usuarios as U')
-                    ->join('tipo_documentos as T', 'U.id_tipo_documento', '=', 'T.id')
-                    ->join('estados as E', 'U.id_estado', '=', 'E.id')
-                    ->join('roles as R', 'U.id_role', '=', 'R.id')
-                    ->select('U.*', 'T.nombre as tipo_documento', 'E.nombre as nombre_estado', 'R.nombre as nombre_role')
-                    ->where('U.id_estado','=',1)
-                    ->orderBy('U.id','DESC')
-                    ->get();
+                        ->join('tipo_documentos as T', 'U.id_tipo_documento', '=', 'T.id')
+                        ->join('estados as E', 'U.id_estado', '=', 'E.id')
+                        ->join('roles as R', 'U.id_role', '=', 'R.id')
+                        ->select('U.*', 'T.nombre as tipo_documento', 'E.nombre as nombre_estado', 'R.nombre as nombre_role')
+                        ->where('U.id_estado','=',1)
+                        ->where('U.id','!=',$id_user)
+                        ->orderBy('U.id','DESC')
+                        ->get();
 
             }catch(QueryException $queryException){
 
@@ -234,17 +237,13 @@ class UsuarioController extends Controller
     }
 
 
-    public function getUsuario(Request $request)
+    public function searchUsuario(Request $request)
     {
         if($request->wantsJson()){
 
-            $usuarios = DB::table('usuarios as U')
-            ->where('U.id_estado', 1)
-            ->where('U.id_role','!=' ,2)
-            ->select('U.*')
-            ->get();
+            $tercero = Usuario::where('numero_documento', '=', $request->numero_documento)->first();
 
-            return $usuarios;
+            return $tercero;
 
         }else{
             return redirect('/');

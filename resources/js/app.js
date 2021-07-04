@@ -80,7 +80,8 @@ Vue.component('e404', require('./components/E404.vue').default);
 
 Vue.component('dashboard', require('./views/Dashboard.vue').default);
 Vue.component('usuarios', require('./views/Usuarios.vue').default);
-
+Vue.component('cursos', require('./views/Cursos.vue').default);
+Vue.component('matricula', require('./views/Matricula.vue').default);
 
 Vue.component('configuracion', require('./views/Configuracion.vue').default);
 Vue.component('login', require('./views/Login.vue').default);

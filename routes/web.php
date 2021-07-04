@@ -33,14 +33,15 @@ Route::prefix('auth')->group(function () {
 
         //Usuarios
         Route::resource('usuarios', 'UsuarioController');
+        Route::post('searchUsuario', 'UsuarioController@searchUsuario');
 
-   
-         //wispro
-         Route::post('sinc_users_wispro', 'UsuarioController@sinc_users_wispro');
-         Route::post('sinc_contratos_wispro', 'ContratoController@sinc_contratos_wispro');
+        //Cursos
+        Route::resource('cursos', 'CursoController');
 
+        //Matricula
+        Route::resource('matricula', 'MatriculaCursoController');
         
-        
+                
         //Tipo documento
         Route::resource('documentos', 'TipoDocumentoController');
 
@@ -55,10 +56,7 @@ Route::prefix('auth')->group(function () {
 //Tipo documento
 Route::resource('documentos', 'TipoDocumentoController');
 
-//Ciudad
-Route::resource('ciudads', 'CiudadController');
 
-Route::get('prueba', 'ReporteController@prueba');
 
 
 Route::get('/{vue?}', function () {

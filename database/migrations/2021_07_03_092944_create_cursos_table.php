@@ -17,6 +17,8 @@ class CreateCursosTable extends Migration
             $table->increments('id');
             $table->string('nombre',100);
             $table->integer('intensidad_horaria');
+            $table->unsignedInteger('id_estado')->nullable();
+            $table->foreign('id_estado')->references('id')->on('estados');
             $table->timestamps();
         });
     }

@@ -2,7 +2,8 @@
 
     <div>
 
-        
+        <dashboardAdmin v-if="this.rol_user == 1"></dashboardAdmin>
+        <dashboardContabilidad v-if="this.rol_user == 2"></dashboardContabilidad>
    
     </div>
 
@@ -15,7 +16,9 @@
     import numeral from 'numeral';
     import {misMixins} from '../mixins.js';
 
-
+    //import dashboards
+    import dashboardAdmin from './dashboards/dashboardAdmin.vue';
+    import dashboardAlumno from './dashboards/dashboardAlumno.vue';
 
     export default{
 
@@ -25,6 +28,8 @@
         },
         components: {
             
+            dashboardAdmin,
+            dashboardAlumno
         },
         data (){
 
