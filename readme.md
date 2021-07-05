@@ -31,7 +31,7 @@ administrador y alumno.
 
 # Ejecución
 1. Clonar repositorio
-2. Crear base de datos con el nombre spira y configurar archivo .env
+2. Crear base de datos con el nombre spira, importar archivo "spira.sql" y configurar archivo .env
 3. Ejecutar composer install
 4. Ejecutar npm install
 5. Ejecutar los siguientes comandos:
@@ -39,9 +39,8 @@ administrador y alumno.
     - php artisan jwt:secret
     - php artisan config:cache
     - php artisan cache:clear
-    - php artisan view:clear 
-    - php artisan migrate   
+    - php artisan view:clear  
 
 6. para crear una cuenta se debe hacer click en la opción "¿No tienes una cuenta? Regístrate",
-ubicada en la parte inferior del botón de iniciar sesión.
+ubicada en la parte inferior del botón de iniciar sesión, aquí se creará un usuario con rol administrador.
 
