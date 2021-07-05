@@ -241,9 +241,9 @@ class UsuarioController extends Controller
     {
         if($request->wantsJson()){
 
-            $tercero = Usuario::where('numero_documento', '=', $request->numero_documento)->first();
+            $usuario = Usuario::where('numero_documento', '=', $request->numero_documento)->first();
 
-            return $tercero;
+            return $usuario;
 
         }else{
             return redirect('/');

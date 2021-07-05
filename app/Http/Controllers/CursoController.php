@@ -15,25 +15,22 @@ class CursoController extends Controller
      */
     public function index(Request $request)
     {
-        if($request->wantsJson()){
+        if ($request->wantsJson()) {
 
 
-            try{
+            try {
 
-                    $cursos = DB::table('cursos as C')
-                        ->where('C.id_estado','=',1)
-                        ->orderBy('C.id','DESC')
-                        ->get();
-
-            }catch(QueryException $queryException){
+                $cursos = DB::table('cursos as C')
+                    ->where('C.id_estado', '=', 1)
+                    ->orderBy('C.id', 'DESC')
+                    ->get();
+            } catch (QueryException $queryException) {
 
                 return $queryException->getMessage();
             }
 
             return $cursos;
-
-
-        }else{
+        } else {
             return redirect('/');
         }
     }
@@ -56,7 +53,7 @@ class CursoController extends Controller
      */
     public function store(Request $request)
     {
-        if($request->wantsJson()){
+        if ($request->wantsJson()) {
 
             $this->validate($request, [
                 'nombre' => 'required',
@@ -64,24 +61,21 @@ class CursoController extends Controller
             ]);
 
 
-                    $curso = new Curso();
+            $curso = new Curso();
 
-                    $curso->nombre = $request->nombre;
-                    $curso->intensidad_horaria = $request->intensidad_horaria;
-                    $curso->id_estado = 1;
+            $curso->nombre = $request->nombre;
+            $curso->intensidad_horaria = $request->intensidad_horaria;
+            $curso->id_estado = 1;
 
-                    $curso->save();
-    
-        
-                return response()->json([
-                    'status' => 'Operacion concretada!',
-                    'msg' => 'curso creado satisfactoriamente',
-                    'code' => 1
-                ],201);
-        
-    
+            $curso->save();
 
-        }else{
+
+            return response()->json([
+                'status' => 'Operacion concretada!',
+                'msg' => 'curso creado satisfactoriamente',
+                'code' => 1
+            ], 201);
+        } else {
             return redirect('/');
         }
     }
@@ -117,7 +111,7 @@ class CursoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if($request->wantsJson()){
+        if ($request->wantsJson()) {
 
             $this->validate($request, [
                 'nombre' => 'required',
@@ -125,23 +119,20 @@ class CursoController extends Controller
             ]);
 
 
-                    $curso = Curso::find($id);
+            $curso = Curso::find($id);
 
-                    $curso->nombre = $request->nombre;
-                    $curso->intensidad_horaria = $request->intensidad_horaria;
+            $curso->nombre = $request->nombre;
+            $curso->intensidad_horaria = $request->intensidad_horaria;
 
-                    $curso->save();
-    
-        
-                return response()->json([
-                    'status' => 'Operacion concretada!',
-                    'msg' => 'curso actualizado satisfactoriamente',
-                    'code' => 1
-                ],201);
-        
-    
+            $curso->save();
 
-        }else{
+
+            return response()->json([
+                'status' => 'Operacion concretada!',
+                'msg' => 'curso actualizado satisfactoriamente',
+                'code' => 1
+            ], 201);
+        } else {
             return redirect('/');
         }
     }
@@ -154,14 +145,13 @@ class CursoController extends Controller
      */
     public function destroy(Request $request, $id)
     {
-        if($request->wantsJson()){
+        if ($request->wantsJson()) {
 
             $curso = Curso::find($id);
             $curso->id_estado = 2;
 
             $curso->save();
-
-        }else{
+        } else {
             return redirect('/');
         }
     }

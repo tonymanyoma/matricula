@@ -16,6 +16,8 @@ class CreateMatriculaCursosTable extends Migration
         Schema::create('matricula_cursos', function (Blueprint $table) {
             $table->increments('id');
             $table->date('fecha');
+            $table->unsignedInteger('id_usuario')->nullable();
+            $table->foreign('id_usuario')->references('id')->on('usuarios');
             $table->unsignedInteger('id_estado')->nullable();
             $table->foreign('id_estado')->references('id')->on('estados');
             $table->timestamps();

@@ -19,52 +19,47 @@ class DashboardController extends Controller
      */
     public function index(Request $request)
     {
-        
     }
 
 
     public function infoDashboardAdmin(Request $request)
     {
-        if($request->wantsJson()){
+        if ($request->wantsJson()) {
 
             $TotalCursos = Curso::where('id_estado', '=', 1)->count();
 
             $TotalUsuarios = Usuario::where('id_estado', '=', 1)->count();
 
             $TotalMatriculas = Matricula_curso::where('id_estado', '=', 1)->count();
-                    
+
             return response()->json([
                 'status' => 'success',
                 'TotalCursos' => $TotalCursos,
                 'TotalUsuarios' => $TotalUsuarios,
                 'TotalMatriculas' => $TotalMatriculas,
 
-            ],200);
-          
-        }else{
+            ], 200);
+        } else {
             return redirect('/');
         }
-        
     }
 
     public function infoDashboardAlumno(Request $request)
     {
-        if($request->wantsJson()){
+        if ($request->wantsJson()) {
 
             $id_user = Auth::user()->id;
 
-            $TotalCursos = Detalle_matricula_curso::where('id_usuario', '=', $id_user) ->count();
-         
-                    
+            $TotalCursos = Detalle_matricula_curso::where('id_usuario', '=', $id_user)->count();
+
+
             return $TotalCursos;
-          
-        }else{
+        } else {
             return redirect('/');
         }
-        
     }
 
-    
+
 
     /**
      * Show the form for creating a new resource.
