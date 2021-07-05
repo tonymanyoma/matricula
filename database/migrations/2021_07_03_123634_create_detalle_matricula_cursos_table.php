@@ -17,8 +17,6 @@ class CreateDetalleMatriculaCursosTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('id_matricula')->nullable();
             $table->foreign('id_matricula')->references('id')->on('matricula_cursos');
-            $table->unsignedInteger('id_usuario')->nullable();
-            $table->foreign('id_usuario')->references('id')->on('usuarios');
             $table->unsignedInteger('id_curso')->nullable();
             $table->foreign('id_curso')->references('id')->on('cursos');
             $table->timestamps();

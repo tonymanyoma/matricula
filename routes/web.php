@@ -28,7 +28,10 @@ Route::prefix('auth')->group(function () {
         // Logout user from application
         Route::post('logout', 'AuthController@logout');
 
-       
+
+        //Dashboard
+        Route::get('infoDashboardAdmin', 'DashboardController@infoDashboardAdmin');
+        Route::get('infoDashboardAlumno', 'DashboardController@infoDashboardAlumno');
 
 
         //Usuarios
@@ -40,16 +43,14 @@ Route::prefix('auth')->group(function () {
 
         //Matricula
         Route::resource('matricula', 'MatriculaCursoController');
-        
-                
+        Route::post('infomatricula', 'MatriculaCursoController@infomatricula');
+        Route::post('matriculaUpdate', 'MatriculaCursoController@matriculaUpdate');
+
         //Tipo documento
         Route::resource('documentos', 'TipoDocumentoController');
 
         //Roles
         Route::resource('roles', 'RoleController');
-
-      
-        
     });
 });
 

@@ -3,9 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Ciudad;
+use App\Curso;
+use App\Detalle_matricula_curso;
+use App\Matricula_curso;
+use App\Usuario;
 use Illuminate\Http\Request;
+use Auth;
 
-class CiudadController extends Controller
+class DashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,30 +19,47 @@ class CiudadController extends Controller
      */
     public function index(Request $request)
     {
-        if($request->wantsJson()){
-
-            $ciudads = Ciudad::select('id', 'nombre')
-            ->where('id_departamento', 76)
-            ->orderBy('id', 'asc')->get();
-
-            return $ciudads;
-        }else{
-            return redirect('/');
-        }
     }
 
-    public function ciudadsExpedicionDocumento(Request $request)
+
+    public function infoDashboardAdmin(Request $request)
     {
-        if($request->wantsJson()){
+        if ($request->wantsJson()) {
 
-            $ciudads = Ciudad::select('id', 'nombre')
-            ->orderBy('id', 'asc')->get();
+            $TotalCursos = Curso::where('id_estado', '=', 1)->count();
 
-            return $ciudads;
-        }else{
+            $TotalUsuarios = Usuario::where('id_estado', '=', 1)->count();
+
+            $TotalMatriculas = Matricula_curso::where('id_estado', '=', 1)->count();
+
+            return response()->json([
+                'status' => 'success',
+                'TotalCursos' => $TotalCursos,
+                'TotalUsuarios' => $TotalUsuarios,
+                'TotalMatriculas' => $TotalMatriculas,
+
+            ], 200);
+        } else {
             return redirect('/');
         }
     }
+
+    public function infoDashboardAlumno(Request $request)
+    {
+        if ($request->wantsJson()) {
+
+            $id_user = Auth::user()->id;
+
+            $TotalCursos = Detalle_matricula_curso::where('id_usuario', '=', $id_user)->count();
+
+
+            return $TotalCursos;
+        } else {
+            return redirect('/');
+        }
+    }
+
+
 
     /**
      * Show the form for creating a new resource.
