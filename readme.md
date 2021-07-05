@@ -15,7 +15,7 @@ administrador y alumno.
 6. El alumno solo podrá ver los cursos que tiene matriculados.
 
 
-# Tecnologías uttilizadas
+# Tecnologías utilizadas
 1. Laravel
 2. Vuejs
 3. Mysql
