@@ -39,8 +39,10 @@ administrador y alumno.
     - php artisan jwt:secret
     - php artisan config:cache
     - php artisan cache:clear
-    - php artisan view:clear  
+    - php artisan view:clear 
+   
+6. Ejecutar el comando php artisan serve para ejecutar la aplicación  
 
-6. para crear una cuenta se debe hacer click en la opción "¿No tienes una cuenta? Regístrate",
+7. para crear una cuenta se debe hacer click en la opción "¿No tienes una cuenta? Regístrate",
 ubicada en la parte inferior del botón de iniciar sesión, aquí se creará un usuario con rol administrador.
 
