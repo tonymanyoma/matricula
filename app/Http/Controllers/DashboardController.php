@@ -9,6 +9,7 @@ use App\Matricula_curso;
 use App\Usuario;
 use Illuminate\Http\Request;
 use Auth;
+use DB;
 
 class DashboardController extends Controller
 {
@@ -50,7 +51,13 @@ class DashboardController extends Controller
 
             $id_user = Auth::user()->id;
 
-            $TotalCursos = Detalle_matricula_curso::where('id_usuario', '=', $id_user)->count();
+
+            $TotalCursos = DB::table('matricula_cursos as M')
+                        ->join('detalle_matricula_cursos as D', 'D.id_matricula', '=', 'M.id')
+                        ->where('M.id_usuario', '=', $id_user)
+                        ->where('M.id_estado', '=', 1)
+                        ->count();
+                        
 
 
             return $TotalCursos;
